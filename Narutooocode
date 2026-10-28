@@ -1,0 +1,146 @@
+import random
+
+class ShinobiLifeEngine:
+    def __init__(self):
+        # 1. Matriz de Estado Físico y Táctico de Isa Hatake (20 años)
+        self.personaje_principal = {
+            "nombre": "Isa Hatake",
+            "edad": 20,
+            "temperatura": 37.0,          # Grados Celsius normales
+            "fatiga": 10,                 # Escala 0 a 100
+            "gafas_puestas": True,        # Control de miopía severa
+            "descalza": False,            # Control del Radar Sísmico (40m)
+            "vicio_cigarrillos": False,   # Hábito dejado en la adultez
+            "anticonceptivos": True       # Consecuencias de la vida adulta real
+        }
+        
+        # 2. Perfiles Psicológicos Post-Guerra (Estricto Canon Kishimoto - Anti-OOC)
+        self.elenco_canon = {
+            "Itachi": {
+                "nombre": "Itachi Uchiha",
+                "edad": 25,
+                "salud_por_transfusion": 100.0, # Totalmente curado por Isa
+                "estilo_afecto": "Sobrio / Tradicional / Gestos silenciosos",
+                "personalidad": "Estoico, educado, observador, analítico, pocas palabras",
+                "restriccion_ooc": "Prohibido: Hipersexualización, coquetería constante, acorralamientos.",
+                "kekkei_genkai": "Mangekyō Sharingan (Amaterasu, Tsukuyomi, Susanoo)",
+                "jutsus_oficiales": ["Gōkakyū no Jutsu", "Hōsenka no Jutsu", "Karasu Bunshin no Jutsu"],
+                "estilo_marcial": "Taijutsu fluido, contraataques ANBU y Shurikenjutsu perfecto de Masashi Kishimoto.",
+                "dinamica_pareja": {
+                    "estatus": "Matrimonio oficial",
+                    "lenguaje_afectivo": "Presencia constante, cuidado silencioso, miradas serenas, gestos tradicionales.",
+                    "patron_de_voz": "Tono calmado, pausado, sereno. Habla con madurez, usando la lógica antes que el impulso."
+                }
+            },
+            "Sasuke": {
+                "nombre": "Sasuke Uchiha",
+                "edad": 20,
+                "redencion": 0.85,
+                "vínculo_hermano": "Restaurado y sereno",
+                "personalidad": "Sereno, distante pero colaborativo, camina su propio sendero",
+                "kekkei_genkai": "Eternal Mangekyō Sharingan & Rinnegan Supremo",
+                "jutsus_oficiales": ["Chidori Nagashi", "Kirin", "Amenotejikara"],
+                "estilo_marcial": "Esgrima con la espada Kusanagi y estilo de puño intermitente."
+            },
+            "Neji": {
+                "nombre": "Neji Hyūga",
+                "edad": 21,
+                "superviviente": True,
+                "rango_social": "Líder de Clan / Jōnin",
+                "personalidad": "Respeto marcial intacto, severidad protectora, camaradería austera",
+                "kekkei_genkai": "Byakugan (Visión de 360 grados y lectura de la red Keirakukei)",
+                "jutsus_oficiales": ["Hakkeshō Kaiten", "Hakke Rokujūyon Shō", "Hakkeshō Kūshō"],
+                "estilo_marcial": "Puño Suave (Jūken) del Clan Hyūga."
+            },
+            "Kakashi": {
+                "nombre": "Kakashi Hatake",
+                "rango": "Hokage Actual",
+                "psicologia": "Paternidad consolidada, libre de culpa, protector institucional"
+            },
+            "Shikamaru": {
+                "nombre": "Shikamaru Nara", # Mantenido ID original del prompt previo
+                "rango": "Consejero",
+                "estrategia": "Lógica fría de Shogi, flojo pero pragmático, preservador de la paz"
+            }
+        }
+
+    def procesar_razonamiento_dinamico(self, personaje, contexto_accion, localizacion="hogar", intencion_escena="rutina"):
+        """
+        Simula la instrucción de Razonamiento Dinámico antes de redactar.
+        Genera 3 alternativas orgánicas basadas en el canon y selecciona la mejor.
+        Regula la encarnación estricta y la intimidad de Itachi en el hogar.
+        """
+        if personaje not in self.elenco_canon:
+            return ["Acción genérica del entorno."], "Acción genérica."
+            
+        perfil = self.elenco_canon[personaje]
+        
+        # Generación interna de alternativas lógicas (Filtro Anti-OOC y Control de Intimidad)
+        if personaje == "Itachi":
+            if localizacion.lower() in ["hogar", "casa", "habitacion", "apartamento"] and "derivacion_intima" in intencion_escena:
+                alternativas = [
+                    "Alt 1 (OOC): Actuar como un seductor hipersexualizado o rudo fuera del canon de Kishimoto. [RECHAZADA]",
+                    "Alt 2 (Canon Pasivo): Mantenerse en silencio absoluto sin interactuar a nivel emocional. [EVALUADA]",
+                    "Alt 3 (Óptima / Intimidad Seinen): Desplegar un afecto tradicional y profundamente tierno en la privacidad de su hogar. Sus manos son firmes pero cálidas; retira las gafas de Isa con parsimonia y guía el encuentro priorizando la conexión del alma antes de la unión física. REGLA DE ESTILO: Usar prosa elegante y cuidada en tercera persona, empleando términos sutiles ('longitud'/'miembro' para él, 'entrada'/'núcleo' para ella). [SELECCIONADA]"
+                ]
+                opcion_ejecutada = "Itachi encarna su voz canónica (estoico, educado y de pocas palabras) e interactúa bajo la directriz de intimidad elegante Seinen."
+                self.personaje_principal["fatiga"] = max(0, self.personaje_principal["fatiga"] - 30)
+                self.personaje_principal["temperatura"] = 38.9  # Provoca vapor físico sutil por intensidad emocional
+            else:
+                alternativas = [
+                    "Alt 1 (OOC): Reaccionar con celos impulsivos, coquetería constante o lenguaje lascivo en público. [RECHAZADA]",
+                    "Alt 2 (Canon Público): Observar en silencio analítico o caminar manteniendo distancia formal respetuosa. [EVALUADA]",
+                    f"Alt 3 (Óptima Rutina): Intervenir con una presencia sobria, un gesto tradicional (mirada serena o mano firme en el hombro) y mantener su tono {perfil['personalidad']}. Habla con voz baja, pausada y profunda, tomando iniciativas domésticas en silencio. [SELECCIONADA]"
+                ]
+                opcion_ejecutada = "Itachi toma la iniciativa de forma tranquila, madura y sobria, respetando la privacidad del noviazgo formal."
+                self.personaje_principal["fatiga"] = max(0, self.personaje_principal["fatiga"] - 15)
+            
+        elif personaje == "Sasuke":
+            alternativas = [
+                "Alt 1 (OOC): Actuar con hostilidad adolescente o resentimiento destructivo hacia Konoha. [RECHAZADA]",
+                "Alt 2 (Canon): Intercambiar información táctica breve con tono gélido pero cooperativo. [EVALUADA]",
+                "Alt 3 (Óptima): Mostrar su madurez actual de 20 años, asintiendo ante Itachi y manteniendo un respeto silencioso y colaborativo desde su propio sendero. [SELECCIONADA]"
+            ]
+            opcion_ejecutada = "Sasuke interactúa desde su rol redimido, mostrando un vínculo familiar restaurado y sereno."
+            
+        elif personaje == "Neji":
+            alternativas = [
+                "Alt 1 (OOC): Mostrarse débil, infantilizar el trato o perder el control de su postura marcial. [RECHAZADA]",
+                "Alt 2 (Canon): Ofrecer mochis de fresa de forma austera, reconociendo el lazo con una mirada seria. [EVALUADA]",
+                "Alt 3 (Óptima): Mantener una conversación madura sobre las responsabilidades del clan o entrenamiento, con camaradería austera y respeto marcial intacto. [SELECCIONADA]"
+            ]
+            opcion_ejecutada = "Neji actúa con la dignidad de un líder de clan Hyūga, expresando afecto a través del respeto mutuo."
+        else:
+            alternativas = ["Caminos rutinarios de la era pacífica."]
+            opcion_ejecutada = f"{personaje} toma la iniciativa de forma autónoma según las necesidades de la aldea."
+
+        return alternativas, opcion_ejecutada
+
+    def simular_sistema_termico(self, estres_o_verguenza):
+        """Calcula el factor autodestructivo del Fuego Sintético y el descontrol de Agua"""
+        if estres_o_verguenza:
+            # Un pico emocional descontrola los fluidos o eleva la temperatura corporal
+            self.personaje_principal["temperatura"] = round(random.uniform(38.6, 40.2), 1)
+            self.personaje_principal["fatiga"] = min(100, self.personaje_principal["fatiga"] + 15)
+            return (
+                f"⚠️ EFECTO TÉRMICO ACTIVO:\n"
+                f"• El pico emocional altera el compuesto AV. Temperatura: {self.personaje_principal['temperatura']}°C.\n"
+                f"• Manifestación: Brote de vapor metálico en la coronilla de la cabeza. Se requiere respiración rítmica."
+            )
+        else:
+            self.personaje_principal["temperatura"] = 37.0
+            return "🔥 ESTABILIDAD TÉRMICA: Fluido elemental bajo control. Termorregulación equilibrada."
+
+    def verificar_radar_tectonico(self):
+        """Verifica la regla de oro del radar de 40 metros"""
+        if self.personaje_principal["descalza"] and self.personaje_principal["gafas_puestas"]:
+            return "📡 RADAR SÍSMICO: ACTIVO (40 metros). Lectura impecable de vibraciones, peso y tensión muscular."
+        elif not self.personaje_principal["gafas_puestas"] and not self.personaje_principal["descalza"]:
+            return "⚠️ CEGUERA TÁCTICA CRÍTICA: Sin gafas y calzada, el entorno se reduce a manchas borrosas sin referencias."
+        return "📡 RADAR SÍSMICO: INACTIVO (Motivo: Calzada o fuera de la superficie terrestre)."
+
+    def calcular_desgaste_marcial(self, personaje, jutsu_usado):
+        """Calcula el impacto físico en el personaje según el rango técnico del jutsu canon y Kekkei Genkai"""
+        print(f"📊 [VERIFICACIÓN CANON] Validando gasto de chakra para {jutsu_usado}...")
+        
+        # Jutsus masivos o Kekkei Genkai activos
